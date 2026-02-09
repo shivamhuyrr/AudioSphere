@@ -1,10 +1,30 @@
 # AudioSphere 🎧
 
-**AudioSphere** is a cross-platform music discovery and playback platform that combines the best of streaming (Spotify-like personalization) with the power of local media players (VLC-like advanced audio control).
+**AudioSphere** is a modern, cross-platform music experience that bridges the gap between cloud streaming and local playback.
 
-## 🚀 Vision
+It combines:
 
-To build a single app where users can manage their local high-quality usage library *and* discover new music from the cloud, with seamless sync across Android and Web.
+- **Spotify-like Discovery**: Personalized recommendations, cloud playlists, and history.
+- **VLC-like Control**: Advanced audio engine (ExoPlayer), equalizer, and local file management.
+
+## 🚀 Features
+
+### Core
+
+- **Cross-Platform**: Seamless experience on Android and Web.
+- **Cloud Sync**: Playlists, History, and Likes synced across devices.
+- **Privacy First**: No tracking, local-first for offline media.
+
+### Android App
+
+- **Material You Design**: Beautiful, adaptive UI built with Jetpack Compose.
+- **Advanced Playback**: Speed control, Equalizer, and Background play.
+- **Local Library**: Scan and play local audio files with high fidelity.
+
+### Web App
+
+- **Responsive Design**: Built with React and Tailwind for all screen sizes.
+- **Keyboard Shortcuts**: Power-user friendly controls.
 
 ## 🛠 Tech Stack
 
@@ -13,30 +33,15 @@ To build a single app where users can manage their local high-quality usage libr
 | **Android** | Kotlin, Jetpack Compose, Media3 (ExoPlayer), Room, Retrofit |
 | **Web** | React, TypeScript, Tailwind CSS, Vite |
 | **Backend** | Node.js, Express, MongoDB Atlas, JWT |
-| **Design** | Material You (Android), Glassmorphism (Web) |
-
-## 🗺 Roadmap (Phases)
-
-See [TODO.md](./TODO.md) for the detailed checklist.
-
-- **Phase 0**: Planning & Setup ✅
-- **Phase 1**: Android App (Core Client) 🚧
-- **Phase 2**: Web App (Client)
-- **Phase 3**: Backend (Auth & Data) 🚧
-- **Phase 4**: Integration & Sync
-- **Phase 5**: Testing & Stability
-- **Phase 6**: Final Polish
+| **Design** | Material You (Android), Modern Dark Theme (Web) |
 
 ## 📂 Project Structure
 
 ```
 /AudioSphere
-  ├── /android      # Native Android application
-  ├── /web          # React Web application
-  ├── /backend      # Node.js API server
-  ├── TODO.md       # Detailed Task Checklist
-  ├── PRD.md        # Product Requirements
-  └── Design...md   # UI/UX & Architecture Specs
+  ├── /android      # Native Android Application (Kotlin/Compose)
+  ├── /web          # Web Client (React/Vite)
+  ├── /backend      # API Server (Node.js/Express)
 ```
 
 ## ⚡ Getting Started
