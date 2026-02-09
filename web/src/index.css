@@ -1,0 +1,45 @@
+:root {
+  --background: #121212;
+  --surface: #212121;
+  --primary: #1DB954;
+  --text-primary: #FFFFFF;
+  --text-secondary: #B3B3B3;
+  --sidebar-width: 240px;
+  --player-height: 90px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+  overflow: hidden; /* Prevent body scroll, layout handles it */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
