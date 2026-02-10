@@ -35,24 +35,24 @@ import com.audiosphere.app.R
 import com.audiosphere.app.ui.theme.AudioSphereTheme
 
 // Mock Data Models
-data class PlaylistItem(val id: Int, val title: String, val subtitle: String, val imageUrl: String = "")
+data class PlaylistItem(val id: Int, val title: String, val subtitle: String, val imageUrl: String = "", val mediaUrl: String = "")
 
 val mockRecentlyPlayed = listOf(
-    PlaylistItem(1, "Liked Songs", "Auto Playlist"),
-    PlaylistItem(2, "Rock Classics", "Playlist • AudioSphere"),
-    PlaylistItem(3, "Late Night Lo-Fi", "Playlist • User"),
-    PlaylistItem(4, "Podcast: Tech Talk", "Podcast")
+    PlaylistItem(1, "Liked Songs", "Auto Playlist", "", "https://storage.googleapis.com/uamp/The_Kyoto_Connection_-_Wake_Up/01_-_Intro_-_The_Kyoto_Connection_-_Wake_Up.mp3"),
+    PlaylistItem(2, "Rock Classics", "Playlist • AudioSphere", "", "https://storage.googleapis.com/uamp/Kai_Engel_-_Irsen_s_Tale/02_-_Irsen_s_Tale_-_Kai_Engel_-_Irsen_s_Tale.mp3"),
+    PlaylistItem(3, "Late Night Lo-Fi", "Playlist • User", "", "https://storage.googleapis.com/uamp/The_Kyoto_Connection_-_Wake_Up/01_-_Intro_-_The_Kyoto_Connection_-_Wake_Up.mp3"),
+    PlaylistItem(4, "Podcast: Tech Talk", "Podcast", "", "https://storage.googleapis.com/uamp/Kai_Engel_-_Irsen_s_Tale/02_-_Irsen_s_Tale_-_Kai_Engel_-_Irsen_s_Tale.mp3")
 )
 
 val mockMadeForYou = listOf(
-    PlaylistItem(5, "Discover Weekly", "Playlist • AudioSphere"),
-    PlaylistItem(6, "Daily Mix 1", "For You"),
-    PlaylistItem(7, "Release Radar", "New Music"),
-    PlaylistItem(8, "On Repeat", "Songs you love")
+    PlaylistItem(5, "Discover Weekly", "Playlist • AudioSphere", "", "https://storage.googleapis.com/uamp/The_Kyoto_Connection_-_Wake_Up/01_-_Intro_-_The_Kyoto_Connection_-_Wake_Up.mp3"),
+    PlaylistItem(6, "Daily Mix 1", "For You", "", "https://storage.googleapis.com/uamp/Kai_Engel_-_Irsen_s_Tale/02_-_Irsen_s_Tale_-_Kai_Engel_-_Irsen_s_Tale.mp3"),
+    PlaylistItem(7, "Release Radar", "New Music", "", "https://storage.googleapis.com/uamp/The_Kyoto_Connection_-_Wake_Up/01_-_Intro_-_The_Kyoto_Connection_-_Wake_Up.mp3"),
+    PlaylistItem(8, "On Repeat", "Songs you love", "", "https://storage.googleapis.com/uamp/Kai_Engel_-_Irsen_s_Tale/02_-_Irsen_s_Tale_-_Kai_Engel_-_Irsen_s_Tale.mp3")
 )
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(onTrackClick: (PlaylistItem) -> Unit = {}) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -65,18 +65,18 @@ fun HomeScreen() {
         }
 
         item {
-            HScrollSection(title = "Recently Played", items = mockRecentlyPlayed)
+            HScrollSection(title = "Recently Played", items = mockRecentlyPlayed, onItemClick = onTrackClick)
         }
 
         item {
-            HScrollSection(title = "Made For You", items = mockMadeForYou)
+            HScrollSection(title = "Made For You", items = mockMadeForYou, onItemClick = onTrackClick)
         }
         
         item {
             HScrollSection(title = "VLC Local Media", items = listOf(
-                PlaylistItem(9, "Downloads", "Local Folder"),
-                PlaylistItem(10, "Music", "Local Folder"),
-            ))
+                PlaylistItem(9, "Downloads", "Local Folder", "", "https://storage.googleapis.com/uamp/The_Kyoto_Connection_-_Wake_Up/01_-_Intro_-_The_Kyoto_Connection_-_Wake_Up.mp3"),
+                PlaylistItem(10, "Music", "Local Folder", "", "https://storage.googleapis.com/uamp/Kai_Engel_-_Irsen_s_Tale/02_-_Irsen_s_Tale_-_Kai_Engel_-_Irsen_s_Tale.mp3"),
+            ), onItemClick = onTrackClick)
         }
     }
 }
@@ -99,7 +99,7 @@ fun GreetingHeader() {
 }
 
 @Composable
-fun HScrollSection(title: String, items: List<PlaylistItem>) {
+fun HScrollSection(title: String, items: List<PlaylistItem>, onItemClick: (PlaylistItem) -> Unit) {
     Column {
         Text(
             text = title,
@@ -113,16 +113,18 @@ fun HScrollSection(title: String, items: List<PlaylistItem>) {
             contentPadding = PaddingValues(end = 16.dp)
         ) {
             items(items) { item ->
-                PlaylistItemCard(item)
+                PlaylistItemCard(item, onClick = { onItemClick(item) })
             }
         }
     }
 }
 
 @Composable
-fun PlaylistItemCard(item: PlaylistItem) {
+fun PlaylistItemCard(item: PlaylistItem, onClick: () -> Unit) {
     Column(
-        modifier = Modifier.width(140.dp)
+        modifier = Modifier
+            .width(140.dp)
+            .clickable { onClick() }
     ) {
         Box(
             modifier = Modifier

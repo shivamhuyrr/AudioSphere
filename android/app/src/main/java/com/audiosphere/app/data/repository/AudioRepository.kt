@@ -29,7 +29,7 @@ class AudioRepository(private valcontext: Context) {
         mediaController?.let { controller ->
             // For demo, we are just using a sample URL since we don't have real audio files yet
             // In a real app, this would come from the item.
-            val mediaItem = MediaItem.fromUri("https://storage.googleapis.com/uamp/The_Kyoto_Connection_-_Wake_Up/01_-_Intro_-_The_Kyoto_Connection_-_Wake_Up.mp3")
+            val mediaItem = MediaItem.fromUri(item.mediaUrl)
             controller.setMediaItem(mediaItem)
             controller.prepare()
             controller.play()

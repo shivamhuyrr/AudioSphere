@@ -73,7 +73,7 @@ fun MainScreen() {
     ) { innerPadding ->
         // Apply modifier to respect bottom bar padding
         androidx.compose.foundation.layout.Box(modifier = Modifier.padding(innerPadding)) {
-            AudioSphereNavHost(navController = navController)
+            AudioSphereNavHost(navController = navController, playerViewModel = viewModel)
         }
     }
 }

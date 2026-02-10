@@ -66,3 +66,5 @@ npm run dev
 ### Android
 
 Open the `/android` directory in Android Studio and sync Gradle.
+
+For detailed setup instructions, including emulator configuration, please see [CONTRIBUTING.md](CONTRIBUTING.md).

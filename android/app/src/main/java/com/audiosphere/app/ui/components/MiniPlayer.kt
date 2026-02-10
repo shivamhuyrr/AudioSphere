@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -66,7 +67,7 @@ fun MiniPlayer(
 
         IconButton(onClick = onPlayPauseClick) {
             Icon(
-                imageVector = if (isPlaying) Icons.Default.PlayArrow else Icons.Default.PlayArrow, // TODO: Add Pause icon
+                imageVector = if (isPlaying) Icons.Default.Pause else Icons.Default.PlayArrow,
                 contentDescription = if (isPlaying) "Pause" else "Play",
                 tint = MaterialTheme.colorScheme.onSurface
             )

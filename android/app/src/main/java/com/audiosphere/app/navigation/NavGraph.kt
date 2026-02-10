@@ -4,7 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.compose.ui.Modifier
 import com.audiosphere.app.ui.screens.HomeScreen
+import com.audiosphere.app.ui.viewmodel.PlayerViewModel
 import com.audiosphere.app.ui.screens.LibraryScreen
 import com.audiosphere.app.ui.screens.SearchScreen
 
@@ -15,9 +17,11 @@ sealed class Screen(val route: String) {
 }
 
 @Composable
-fun AudioSphereNavHost(navController: NavHostController) {
+fun AudioSphereNavHost(navController: NavHostController, playerViewModel: PlayerViewModel) {
     NavHost(navController = navController, startDestination = Screen.Home.route) {
-        composable(Screen.Home.route) { HomeScreen() }
+        composable(Screen.Home.route) { 
+            HomeScreen(onTrackClick = { track -> playerViewModel.playTrack(track) }) 
+        }
         composable(Screen.Search.route) { SearchScreen() }
         composable(Screen.Library.route) { LibraryScreen() }
     }
